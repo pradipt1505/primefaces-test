@@ -15,7 +15,23 @@
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
 
-        </h:form>
+		<h:panelGroup layout="block" id="selDialogGrp">
+			<h:panelGrid id="selDialogGrid0" columns="1">
+				<p:selectOneMenu id="option" value="#{defaultCommandView.btn}">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Btn1" itemValue="Btn1"/>
+                    <f:selectItem itemLabel="Btn2" itemValue="Btn2"/>
+                </p:selectOneMenu>
+			</h:panelGrid>
+		</h:panelGroup>
+		
+		<p:commandButton value="Button1" id="btn1" rendered="#{defaultCommandView.btn eq 'Btn1'}" action="#{defaultCommandView.btn1Submit}" />
+        <p:commandButton value="Button2" id="btn2" rendered="#{defaultCommandView.btn eq 'Btn2'}" action="#{defaultCommandView.btn2Submit}"/>
+
+        <p:defaultCommand target="btn1" scope="btn1"/>
+        <p:defaultCommand target="btn2" scope="btn2"/>
+		<p:separator />
+    </h:form>
 
     </h:body>
 </html>
